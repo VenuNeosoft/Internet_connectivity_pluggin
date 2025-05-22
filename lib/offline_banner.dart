@@ -116,11 +116,9 @@ class _OfflineBannerState extends State<OfflineBanner>
               bottom: widget.bannerPosition == BannerPosition.bottom ? 0 : null,
               left: 0,
               right: 0,
-
               child: SlideTransition(
                 position: _offlineAnimation,
-                child:
-                    widget.customBanner ??
+                child: widget.customBanner ??
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16,
@@ -140,20 +138,20 @@ class _OfflineBannerState extends State<OfflineBanner>
                           const SizedBox(width: 12),
                           _isRetrying
                               ? const SizedBox(
-                                height: 18,
-                                width: 18,
-                                child: CircularProgressIndicator(
-                                  color: Colors.white,
-                                  strokeWidth: 2,
-                                ),
-                              )
+                                  height: 18,
+                                  width: 18,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                    strokeWidth: 2,
+                                  ),
+                                )
                               : TextButton(
-                                onPressed: _retryCheck,
-                                child: const Text(
-                                  'Retry',
-                                  style: TextStyle(color: Colors.white),
+                                  onPressed: _retryCheck,
+                                  child: const Text(
+                                    'Retry',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
-                              ),
                         ],
                       ),
                     ),
@@ -166,7 +164,6 @@ class _OfflineBannerState extends State<OfflineBanner>
                 top: widget.bannerPosition == BannerPosition.top ? 0 : null,
                 bottom:
                     widget.bannerPosition == BannerPosition.bottom ? 50 : null,
-
                 left: MediaQuery.of(context).size.width * 0.2,
                 right: MediaQuery.of(context).size.width * 0.2,
                 child: AnimatedOpacity(

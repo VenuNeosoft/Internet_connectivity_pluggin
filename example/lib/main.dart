@@ -10,13 +10,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: OfflineBanner(
-        retryCallback: () {
-          // Any action after reconnection
-          debugPrint("Retry successful — now online!");
-        },
-        child: const HomeScreen(),
+    return OfflineBanner(
+       retryCallback: () {
+            // Any action after reconnection
+            debugPrint("Retry successful — now online!");
+          },
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: const HomeScreen(),
       ),
     );
   }
@@ -29,10 +30,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Internet Connection Checking'),
+        title: Text('Offline Banner'),
         backgroundColor: Colors.blue,
       ),
-      body: Center(child: Text('Home Screen')),
+      body: Center(
+          child: Text('Internet Connection Checking')),
     );
   }
 }
