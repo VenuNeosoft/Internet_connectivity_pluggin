@@ -62,18 +62,6 @@ Add the following permissions in android/app/src/main/AndroidManifest.xml:
 
  ```
     
-Add the following permissions in  /android/app/src/main/res/xml/network_security_config.xml
-if you dont have create one file and add below code in xml/network_security_config.xml
-
-``` network_security_config.xml
-<?xml version="1.0" encoding="utf-8"?>
-<network-security-config>
-    <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">images.template.net</domain>
-    </domain-config>
-</network-security-config>
-```
-
 Add the following permissions in android/app/build.gradle:
 
 ``` xml

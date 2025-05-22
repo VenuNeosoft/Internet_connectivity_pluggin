@@ -7,3 +7,9 @@
 - Includes a retry button with loading indicator.
 - Shows a popup animation when internet is restored.
 - Allows custom banner widget injection.
+
+## [1.0.1] - 2025-05-22
+
+### Added
+
+- Allows banner possition with animation.
