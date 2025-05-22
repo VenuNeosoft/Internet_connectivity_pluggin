@@ -1,16 +1,19 @@
-# offline_banner_example
+# 🛑 offline_banner
 
-Demonstrates how to use the offline_banner plugin.
+A simple Flutter plugin to automatically show a banner when the internet is disconnected.
 
-## Getting Started
+## 🚀 Features
 
-This project is a starting point for a Flutter application.
+- 🔍 Monitors internet connectivity
+- 📢 Displays a red banner when offline
+- 🔁 Retry button integration
+- 🎨 Customizable banner support
 
-A few resources to get you started if this is your first Flutter project:
+## 🔧 Usage
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+OfflineBanner(
+  retryCallback: () => fetchData(),
+  customBanner: MyCustomBannerWidget(),
+  child: MyApp(),
+);
