@@ -1,4 +1,4 @@
-# 📡 offline_banner
+#  📡 offline_banner
 
 A simple Flutter plugin to automatically show a banner when the internet is disconnected.
 
@@ -16,8 +16,9 @@ A simple Flutter plugin to automatically show a banner when the internet is disc
 <table>
 
   <tr>
-    <td><img src="https://raw.githubusercontent.com/VenuNeosoft/Internet_connectivity_pluggin/main/assets/demo.mov" width=270 height=560></td>
+    <td><img src="https://raw.githubusercontent.com/VenuNeosoft/Internet_connectivity_pluggin/main/assets/demo.gif" width=270 height=560></td>
   </tr>
+
  </table>
 
 

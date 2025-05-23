@@ -1,6 +1,6 @@
 name: offline_banner
 description: "A customizable Flutter widget that shows an animated banner when offline and an online popup when internet is restored, with retry support and configurable position."
-version: 1.0.3
+version: 1.0.4
 homepage: https://github.com/VenuNeosoft/Internet_connectivity_pluggin.git
 repository: https://github.com/VenuNeosoft/Internet_connectivity_pluggin.git
 issue_tracker: https://github.com/VenuNeosoft/Internet_connectivity_pluggin/issues
@@ -32,7 +32,7 @@ flutter:
 
 
   assets:
-    - assets/demo.mov
+    - assets/demo.gif
 platforms:
   android:
   ios:

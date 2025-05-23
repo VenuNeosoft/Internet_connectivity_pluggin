@@ -30,3 +30,5 @@ Changed
 
 ## [1.0.3] - 2025-05-23
 - Enhanced reliability by directly integrating with platform APIs for more accurate offline/online detection.
+## [1.0.4] - 2025-05-23
+- Demo video changed
