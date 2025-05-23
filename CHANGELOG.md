@@ -27,3 +27,6 @@ Changed
 - Improved performance and reduced package size by eliminating external connectivity libraries.
 
 - Enhanced reliability by directly integrating with platform APIs for more accurate offline/online detection.
+
+## [1.0.3] - 2025-05-23
+- Enhanced reliability by directly integrating with platform APIs for more accurate offline/online detection.
