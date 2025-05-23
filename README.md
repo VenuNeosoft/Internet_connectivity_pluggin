@@ -5,9 +5,9 @@ A simple Flutter plugin to automatically show a banner when the internet is disc
 ## 🚀 Features
 
 - 🔍 Monitors internet connectivity
-- 📢 Displays a red banner when offline
+- 📢 Displays a red banner when offline with animation
 - 🔁 Retry button integration
-- 🎨 Customizable banner support
+- 🎨 Customizable banner support with animation
 
 ---
 
@@ -28,7 +28,7 @@ A simple Flutter plugin to automatically show a banner when the internet is disc
 Add the following to your `pubspec.yaml`:
 ``` yaml
 dependencies:
-  offline_banner: ^1.0.0
+  offline_banner: ^1.0.2
   ```
 2. Install Package
 Run the following command:
@@ -89,3 +89,6 @@ Add the following keys to your ios/Runner/Info.plist file:
 ✅ VENU RENANGI  
 ✅ SONAM GUPTA
 ✅ KAMNA JOSHI
+
+🤝 Contributors
+✅ Shrinath Gavadoji

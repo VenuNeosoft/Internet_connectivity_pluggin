@@ -1,7 +1,9 @@
 library offline_banner;
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/services.dart';
 
 enum BannerPosition { top, bottom }
 
@@ -27,11 +29,11 @@ class OfflineBanner extends StatefulWidget {
 
 class _OfflineBannerState extends State<OfflineBanner>
     with TickerProviderStateMixin {
+  static const MethodChannel _channel = MethodChannel('offline_banner');
   bool _isOffline = false;
   bool _isRetrying = false;
   bool _showOnlinePopup = false;
 
-  final Connectivity _connectivity = Connectivity();
   late final AnimationController _offlineController;
   late final Animation<Offset> _offlineAnimation;
 
@@ -44,7 +46,7 @@ class _OfflineBannerState extends State<OfflineBanner>
     );
 
     _offlineAnimation = Tween<Offset>(
-      begin: const Offset(0, 1), // slide from bottom
+      begin: const Offset(0, 1),
       end: Offset.zero,
     ).animate(
       CurvedAnimation(parent: _offlineController, curve: Curves.easeInOut),
@@ -60,36 +62,33 @@ class _OfflineBannerState extends State<OfflineBanner>
   }
 
   void _startMonitoring() {
-    _connectivity.onConnectivityChanged.listen((result) {
-      final isOffline = result.any(
-        (result) => result == ConnectivityResult.none,
-      );
-      if (_isOffline != isOffline) {
-        setState(() => _isOffline = isOffline);
-        if (isOffline) {
-          _offlineController.forward(); // show banner
+    _checkConnection();
+    Timer.periodic(widget.checkInterval, (_) => _checkConnection());
+  }
+
+  Future<void> _checkConnection() async {
+    try {
+      final bool result = await _channel.invokeMethod('isOffline');
+      if (_isOffline != result) {
+        setState(() => _isOffline = result);
+        if (_isOffline) {
+          _offlineController.forward();
         } else {
-          _offlineController.reverse(); // hide banner
+          _offlineController.reverse();
           _showOnlinePopupMessage();
         }
       }
-    });
+    } catch (e) {
+      debugPrint('Error checking connectivity: $e');
+    }
   }
 
   Future<void> _retryCheck() async {
     setState(() => _isRetrying = true);
-    final result = await _connectivity.checkConnectivity();
-    final stillOffline = result.any(
-      (result) => result == ConnectivityResult.none,
-    );
-    setState(() {
-      _isOffline = stillOffline;
-      _isRetrying = false;
-    });
+    await _checkConnection();
+    setState(() => _isRetrying = false);
 
-    if (!stillOffline) {
-      _offlineController.reverse();
-      _showOnlinePopupMessage();
+    if (!_isOffline) {
       widget.retryCallback?.call();
     }
   }
@@ -109,8 +108,6 @@ class _OfflineBannerState extends State<OfflineBanner>
         body: Stack(
           children: [
             widget.child,
-
-            /// Offline animated banner
             Positioned(
               top: widget.bannerPosition == BannerPosition.top ? 0 : null,
               bottom: widget.bannerPosition == BannerPosition.bottom ? 0 : null,
@@ -121,9 +118,7 @@ class _OfflineBannerState extends State<OfflineBanner>
                 child: widget.customBanner ??
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 12,
-                      ),
+                          horizontal: 16, vertical: 12),
                       color: Colors.redAccent,
                       width: double.infinity,
                       child: Row(
@@ -157,8 +152,6 @@ class _OfflineBannerState extends State<OfflineBanner>
                     ),
               ),
             ),
-
-            /// Online popup message
             if (_showOnlinePopup)
               Positioned(
                 top: widget.bannerPosition == BannerPosition.top ? 0 : null,
@@ -171,9 +164,7 @@ class _OfflineBannerState extends State<OfflineBanner>
                   duration: const Duration(milliseconds: 500),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 20,
-                    ),
+                        vertical: 10, horizontal: 20),
                     decoration: BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(12),

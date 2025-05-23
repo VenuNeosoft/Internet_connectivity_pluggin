@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - offline_banner (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - offline_banner (from `.symlinks/plugins/offline_banner/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  offline_banner:
+    :path: ".symlinks/plugins/offline_banner/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  offline_banner: 13a9a11d26a8f5a60edbc3a8912587a6367af81f
+
+PODFILE CHECKSUM: 4305caec6b40dde0ae97be1573c53de1882a07e5
+
+COCOAPODS: 1.16.2

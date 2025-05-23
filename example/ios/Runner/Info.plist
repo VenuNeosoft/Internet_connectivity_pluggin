@@ -33,6 +33,9 @@
   <key>NSAllowsArbitraryLoads</key>
   <true/>
 </dict>
+<key>NSLocalNetworkUsageDescription</key>
+<string>This app needs access to the local network for debugging and development tools.</string>
+
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
